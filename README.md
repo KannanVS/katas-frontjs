@@ -142,3 +142,8 @@ The configuration above meets all constraints. Be careful, something like below 
 ```
 
 Events 2 et 3 satisfy both constraints. Events 4 and 5 do not.
+
+
+## Update
+
+`react-big-calendar` library is removed and the calendar is rendered by creating elements and rendering them by radium package.

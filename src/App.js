@@ -1,42 +1,27 @@
-import React from "react";
-import events from "./events.js";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import config from './config/config';
+import './App.css';
+import Calendar from './Calendar';
+import data from './json/input.json';
 
-moment.locale("fr");
-const localizer = momentLocalizer(moment);
+// events to be rendered in calendar
+const events = data.map((event) => {
+  const { id, start, duration } = event;
+  const [ hour, min ] = start.split(':');
 
-const formats = {
-  // hide event time range in the calendar
-  eventTimeRangeFormat: () => { 
-    return "";
-  },
-};
-
-const { date, month, year } = config;
+  const startTime = (hour - 9) * 100 + (min / 60) * 100;
+  return {
+    title: id,
+    start: Math.floor(startTime),
+    end: Math.floor(startTime + (duration / 60) * 100),
+  }
+});
 
 function App() {
-  /**
-   * calendar component displays {events} in 'day' view.
-   * defaultDate is set through config.
-   * fromats is used to change an existing format in calendar
-   */
   return (
-    <div style={{ height: 700 }}>
-    <Calendar
+    <>
+      <Calendar
       events={events}
-      formats={formats}
-      step={30}
-      defaultView="day"
-      localizer={localizer}
-      startAccessor="start"
-      endAccessor="end"
-      defaultDate={new Date(year, month, date)}
-      dayLayoutAlgorithm="no-overlap"
-    />
-  </div>
+      />
+    </>
   );
 }
 
