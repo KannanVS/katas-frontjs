@@ -28,6 +28,46 @@
   color: #61dafb;
 }
 
+/* Calendar styles */
+.Calendar {
+  display: grid;
+  grid-template-columns: 10fr 90fr;
+  grid-template-rows: repeat(13, 100px);
+  align-items: center;
+  justify-content: center;
+}
+
+.Event-box {
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  background-color: #3174ad;
+  box-sizing: border-box;
+  border: 1px solid white;
+  background-size: 100%;
+  display: inline-block;
+  position: absolute;
+  overflow: hidden;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+.Event-item {
+  flex: 1;
+  color: white;
+  font-weight: bold;
+  align-self: flex-start;
+  position: absolute;
+}
+
+.Time-item {
+  border: 1px solid black;
+  font-weight: bold;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

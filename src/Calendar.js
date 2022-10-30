@@ -1,8 +1,21 @@
-import { div, hh } from 'react-hyperscript-helpers';
-import Radium from 'radium';
-import Events from './EventsComponent';
-import TimeRange from './TimeRange';
+import eventsPosition from "./helpers/CalendarHelper";
 
-const Calendar = ({events}) => div([TimeRange(), Events({events})])	;
+// Calendar Component
+const Calendar = (props) => {
+  const timeSlots = props.data.timeSlots.map((timeSlot, index) => (
+    <div className="Time-item" key={index}>
+      {timeSlot}
+    </div>
+  ));
+  const renderedEvents = eventsPosition(props.data.events);
 
-export default hh(Radium(Calendar));
+  // returns timeslots and rendered events
+  return (
+    <div className="Calendar">
+      {timeSlots}
+      {renderedEvents}
+    </div>
+  );
+};
+
+export default Calendar;
