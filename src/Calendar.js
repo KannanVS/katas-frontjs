@@ -1,13 +1,13 @@
-import eventsPosition from "./helpers/CalendarHelper";
+import './assests/calendar.css';
+import { foramattedTimerange, renderedEvents} from "./helpers/calendarHelper";
 
 // Calendar Component
-const Calendar = (props) => {
-  const timeSlots = props.data.timeSlots.map((timeSlot, index) => (
+const Calendar = () => {
+  const timeSlots = foramattedTimerange.map((timeSlot, index) => (
     <div className="Time-item" key={index}>
       {timeSlot}
     </div>
   ));
-  const renderedEvents = eventsPosition(props.data.events);
 
   // returns timeslots and rendered events
   return (
